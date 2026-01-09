@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>เรียนภาษาญี่ปุ่นพื้นฐาน</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f2f2f2;
+  padding: 20px;
+}
+.box {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+button {
+  margin-top: 10px;
+  padding: 6px 12px;
+}
+.correct { color: green; }
+.wrong { color: red; }
+</style>
+</head>
+
+<body>
+
+<h1>🇯🇵 เว็บเรียนภาษาญี่ปุ่นพื้นฐาน</h1>
+
+<!-- วิดีโอ -->
+<div class="box">
+<h2>🎥 วิดีโอการสอน</h2>
+<iframe width="100%" height="315"
+src="https://www.youtube.com/embed/cVKZ6TpvAx0"
+allowfullscreen></iframe>
+</div>
+
+<!-- เนื้อหา -->
+<div class="box">
+<h2>📘 ตัวอักษรพื้นฐาน</h2>
+
+<<h3>ฮิรางานะ (ひらがな)</h3>
+<table border="1" cellpadding="5">
+<tr><td>あ a</td><td>い i</td><td>う u</td><td>え e</td><td>お o</td></tr>
+<tr><td>か ka</td><td>き ki</td><td>く ku</td><td>け ke</td><td>こ ko</td></tr>
+<tr><td>さ sa</td><td>し shi</td><td>す su</td><td>せ se</td><td>そ so</td></tr>
+<tr><td>た ta</td><td>ち chi</td><td>つ tsu</td><td>て te</td><td>と to</td></tr>
+<tr><td>な na</td><td>に ni</td><td>ぬ nu</td><td>ね ne</td><td>の no</td></tr>
+<tr><td>は ha</td><td>ひ hi</td><td>ふ fu</td><td>へ he</td><td>ほ ho</td></tr>
+<tr><td>ま ma</td><td>み mi</td><td>む mu</td><td>め me</td><td>も mo</td></tr>
+<tr><td>や ya</td><td></td><td>ゆ yu</td><td></td><td>よ yo</td></tr>
+<tr><td>ら ra</td><td>り ri</td><td>る ru</td><td>れ re</td><td>ろ ro</td></tr>
+<tr><td>わ wa</td><td></td><td></td><td></td><td>を wo</td></tr>
+<tr><td>ん n</td><td colspan="4"></td></tr>
+</table>
+
+
+<h3>คาตากานะ (カタカナ)</h3>
+<table border="1" cellpadding="5">
+<tr><td>ア a</td><td>イ i</td><td>ウ u</td><td>エ e</td><td>オ o</td></tr>
+<tr><td>カ ka</td><td>キ ki</td><td>ク ku</td><td>ケ ke</td><td>コ ko</td></tr>
+<tr><td>サ sa</td><td>シ shi</td><td>ス su</td><td>セ se</td><td>ソ so</td></tr>
+<tr><td>タ ta</td><td>チ chi</td><td>ツ tsu</td><td>テ te</td><td>ト to</td></tr>
+<tr><td>ナ na</td><td>ニ ni</td><td>ヌ nu</td><td>ネ ne</td><td>ノ no</td></tr>
+<tr><td>ハ ha</td><td>ヒ hi</td><td>フ fu</td><td>ヘ he</td><td>ホ ho</td></tr>
+<tr><td>マ ma</td><td>ミ mi</td><td>ム mu</td><td>メ me</td><td>モ mo</td></tr>
+<tr><td>ヤ ya</td><td></td><td>ユ yu</td><td></td><td>ヨ yo</td></tr>
+<tr><td>ラ ra</td><td>リ ri</td><td>ル ru</td><td>レ re</td><td>ロ ro</td></tr>
+<tr><td>ワ wa</td><td></td><td></td><td></td><td>ヲ wo</td></tr>
+<tr><td>ン n</td><td colspan="4"></td></tr>
+</table>
+
+
+<h3>ประโยคพื้นฐาน</h3>
+<ul>
+<li>こんにちは = สวัสดี</li>
+<li>ありがとう = ขอบคุณ</li>
+<li>わたしのなまえは...です = ฉันชื่อ...ครับ</li>
+<li>これはなんですか = นี่คืออะไร</li>
+<li>いくらですか？=ราคาเท่าไร?</li>
+<li>これでおねがいします=เอาอันนี้หน่อยครับ</li>
+</ul>
+</div>
+
+<!-- QUIZ -->
+<div class="box">
+<h2>✏️ แบบทดสอบ (30 ข้อ)</h2>
+<div id="quiz"></div>
+<button onclick="checkQuiz()">ตรวจคำตอบ</button>
+<h3 id="score"></h3>
+</div>
+
+<script>
+const questions = [
+{q:"あ อ่านว่าอะไร", c:["a","i","u","e"], a:0},
+{q:"い อ่านว่าอะไร", c:["o","i","e","u"], a:1},
+{q:"う อ่านว่าอะไร", c:["u","o","i","a"], a:0},
+{q:"え อ่านว่าอะไร", c:["e","a","i","o"], a:0},
+{q:"お อ่านว่าอะไร", c:["o","u","e","a"], a:0},
+
+{q:"ア อ่านว่าอะไร", c:["a","i","u","e"], a:0},
+{q:"イ อ่านว่าอะไร", c:["o","i","e","u"], a:1},
+{q:"ウ อ่านว่าอะไร", c:["u","o","i","a"], a:0},
+{q:"エ อ่านว่าอะไร", c:["e","a","i","o"], a:0},
+{q:"オ อ่านว่าอะไร", c:["o","u","e","a"], a:0},
+
+{q:"か อ่านว่าอะไร", c:["ka","ki","ku","ke"], a:0},
+{q:"き อ่านว่าอะไร", c:["ke","ki","ku","ka"], a:1},
+{q:"く อ่านว่าอะไร", c:["ku","ko","ka","ki"], a:0},
+{q:"け อ่านว่าอะไร", c:["ke","ku","ki","ka"], a:0},
+{q:"こ อ่านว่าอะไร", c:["ko","ka","ke","ku"], a:0},
+
+{q:"こんにちは แปลว่าอะไร", c:["ลาก่อน","ขอบคุณ","สวัสดี","ขอโทษ"], a:2},
+{q:"ありがとう แปลว่าอะไร", c:["ขอบคุณ","สวัสดี","ขอโทษ","ลาก่อน"], a:0},
+{q:"わたし แปลว่าอะไร", c:["คุณ","ฉัน","เขา","เธอ"], a:1},
+{q:"です ใช้ทำอะไร", c:["คำถาม","อดีต","สุภาพ","ปฏิเสธ"], a:2},
+{q:"なんですか แปลว่าอะไร", c:["ใคร","เมื่อไร","อะไร","ที่ไหน"], a:2},
+
+{q:"フラン คืออะไร", c:["คันจิ","ชื่อ","คำกริยา","สถานที่"], a:1},
+{q:"これは แปลว่าอะไร", c:["นั่น","นี่","เขา","คุณ"], a:1},
+{q:"か ใช้ทำอะไรท้ายประโยค", c:["ย้ำ","สุภาพ","คำถาม","ปฏิเสธ"], a:2},
+{q:"ลาก่อน ภาษาญี่ปุ่นคือ", c:["ありがとう","こんにちは","さようなら","すみません"], a:2},
+{q:"ขอโทษ ภาษาญี่ปุ่นคือ", c:["すみません","ありがとう","こんにちは","はい"], a:0},
+
+{q:"はい แปลว่าอะไร", c:["ไม่","ใช่","ขอบคุณ","ขอโทษ"], a:1},
+{q:"いいえ แปลว่าอะไร", c:["ใช่","ไม่","ขอบคุณ","โอเค"], a:1},
+{q:"คาตากานะใช้กับอะไร", c:["คำญี่ปุ่นแท้","ชื่อฝรั่ง","คำสุภาพ","คำช่วย"], a:1},
+{q:"ฮิรางานะใช้กับอะไร", c:["ชื่อฝรั่ง","คันจิ","คำญี่ปุ่น","ตัวเลข"], a:2},
+{q:"ภาษาญี่ปุ่นมีตัวอักษรกี่แบบ", c:["1","2","3","4"], a:2},
+];
+
+const quizDiv = document.getElementById("quiz");
+
+questions.forEach((q,i)=>{
+  let html = `<p><b>${i+1}. ${q.q}</b></p>`;
+  q.c.forEach((c,ci)=>{
+    html += `<input type="radio" name="q${i}" value="${ci}"> ${c}<br>`;
+  });
+  quizDiv.innerHTML += html + "<br>";
+});
+
+function checkQuiz(){
+  let score = 0;
+  questions.forEach((q,i)=>{
+    const ans = document.querySelector(`input[name="q${i}"]:checked`);
+    if(ans && Number(ans.value) === q.a) score++;
+  });
+  document.getElementById("score").innerText =
+    `คะแนนของคุณ: ${score} / ${questions.length}`;
+}
+</script>
+
+</body>
+</html>
